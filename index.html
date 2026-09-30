@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المتميز ستور | Motamayez Store - Portfolio</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #0b0b0f;
+            --card-bg: #13131a;
+            --purple-primary: #8a2be2;
+            --purple-glow: rgba(138, 43, 226, 0.4);
+            --text-color: #ffffff;
+            --text-muted: #a0a0b0;
+            --transition: all 0.3s ease;
+        }
+
+        .light-mode {
+            --bg-color: #f4f4f9;
+            --card-bg: #ffffff;
+            --text-color: #1a1a1a;
+            --text-muted: #555555;
+            --purple-glow: rgba(138, 43, 226, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+            padding-top: 80px;
+            transition: var(--transition);
+        }
+
+        /* Header / Navbar */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 80px;
+            background: var(--bg-color);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 8%;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(138, 43, 226, 0.2);
+            transition: var(--transition);
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text-color);
+        }
+
+        .logo span {
+            color: var(--purple-primary);
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        nav ul li a:hover {
+            color: var(--purple-primary);
+            text-shadow: 0 0 10px var(--purple-glow);
+        }
+
+        .theme-toggle-btn {
+            background: none;
+            border: 1px solid var(--purple-primary);
+            color: var(--purple-primary);
+            padding: 6px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .theme-toggle-btn:hover {
+            background: var(--purple-primary);
+            color: #fff;
+            box-shadow: 0 0 10px var(--purple-glow);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: calc(100vh - 80px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 8%;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .hero-bg-slider {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            opacity: 0.15;
+        }
+
+        .hero-bg-slider img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            animation: fadeInOut 10s infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(11,11,15,0.7), var(--bg-color));
+            z-index: 2;
+            transition: var(--transition);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .profile-img-container {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            border: 3px solid var(--purple-primary);
+            box-shadow: 0 0 25px var(--purple-glow);
+            overflow: hidden;
+            animation: pulseGlow 3s infinite alternate;
+        }
+
+        .profile-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+        }
+
+        .hero h1 span {
+            color: var(--purple-primary);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 600px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--purple-primary);
+            color: #fff;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 0 15px var(--purple-glow);
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 25px var(--purple-primary);
+        }
+
+        /* Sections General with Scroll Animations */
+        section {
+            padding: 90px 8%;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            font-weight: 700;
+        }
+
+        .section-title span {
+            color: var(--purple-primary);
+        }
+
+        /* Portfolio Section */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 30px;
+            border: 1px solid rgba(138, 43, 226, 0.1);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--purple-primary);
+            box-shadow: 0 10px 30px rgba(138, 43, 226, 0.15);
+        }
+
+        .card.vip {
+            border: 2px solid var(--purple-primary);
+            background: linear-gradient(145deg, var(--card-bg), #1a1025);
+        }
+
+        .vip-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--purple-primary);
+            color: #fff;
+            padding: 4px 12px;
+            font-size: 0.75rem;
+            border-radius: 20px;
+            font-weight: 600;
+            box-shadow: 0 0 10px var(--purple-glow);
+        }
+
+        .card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .card-link {
+            align-self: flex-start;
+            color: var(--purple-primary);
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+        }
+
+        .card-link:hover {
+            color: var(--text-color);
+        }
+
+        /* About Section */
+        .about-content {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(138, 43, 226, 0.2);
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            transition: var(--transition);
+        }
+
+        .about-content p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+
+        .contact-info-list {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .contact-info-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-color);
+            font-weight: 500;
+            text-decoration: none;
+            background: rgba(138, 43, 226, 0.1);
+            padding: 10px 20px;
+            border-radius: 30px;
+            border: 1px solid rgba(138, 43, 226, 0.3);
+            transition: var(--transition);
+        }
+
+        .contact-info-item:hover {
+            background: var(--purple-primary);
+            box-shadow: 0 0 15px var(--purple-glow);
+            color: #fff;
+        }
+
+        .contact-info-item i {
+            color: var(--purple-primary);
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .contact-info-item:hover i {
+            color: #fff;
+        }
+
+        /* Testimonials Section */
+        .testimonials-counter {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--purple-primary);
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        .testimonial-card {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 15px;
+            border: 1px solid rgba(138, 43, 226, 0.1);
+            transition: var(--transition);
+        }
+
+        .testimonial-card p {
+            color: var(--text-muted);
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+
+        .testimonial-card h4 {
+            color: var(--purple-primary);
+            font-size: 1rem;
+        }
+
+        .add-testimonial-form {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 600px;
+            margin: 0 auto;
+            border: 1px solid rgba(138, 43, 226, 0.2);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            transition: var(--transition);
+        }
+
+        .add-testimonial-form input,
+        .add-testimonial-form textarea {
+            width: 100%;
+            padding: 12px 15px;
+            background: var(--bg-color);
+            border: 1px solid rgba(138, 43, 226, 0.3);
+            border-radius: 8px;
+            color: var(--text-color);
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .add-testimonial-form input:focus,
+        .add-testimonial-form textarea:focus {
+            border-color: var(--purple-primary);
+            box-shadow: 0 0 10px var(--purple-glow);
+        }
+
+        /* Contact Section */
+        .contact-form {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 20px;
+            max-width: 650px;
+            margin: 0 auto;
+            border: 1px solid rgba(138, 43, 226, 0.2);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            transition: var(--transition);
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-group label {
+            font-weight: 500;
+            color: var(--text-muted);
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 14px;
+            background: var(--bg-color);
+            border: 1px solid rgba(138, 43, 226, 0.3);
+            border-radius: 10px;
+            color: var(--text-color);
+            font-size: 1rem;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: var(--purple-primary);
+            box-shadow: 0 0 10px var(--purple-glow);
+        }
+
+        /* Tech Stack Section (Bottom Glowing HTML, CSS, JS) */
+        .tech-stack-section {
+            text-align: center;
+            padding: 40px 8%;
+            background: var(--card-bg);
+            border-top: 1px solid rgba(138, 43, 226, 0.2);
+            border-bottom: 1px solid rgba(138, 43, 226, 0.2);
+            transition: var(--transition);
+        }
+
+        .tech-stack-title {
+            font-size: 1.3rem;
+            color: var(--text-muted);
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        .tech-badges-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .tech-badge {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 25px;
+            background: var(--bg-color);
+            border: 2px solid var(--purple-primary);
+            border-radius: 50px;
+            color: var(--text-color);
+            font-size: 1.1rem;
+            font-weight: 700;
+            box-shadow: 0 0 15px var(--purple-glow);
+            animation: pulseGlow 2s infinite alternate;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .tech-badge:hover {
+            transform: scale(1.08);
+            box-shadow: 0 0 30px var(--purple-primary);
+        }
+
+        .tech-badge.html i { color: #e34f26; text-shadow: 0 0 10px #e34f26; }
+        .tech-badge.css i { color: #264de4; text-shadow: 0 0 10px #264de4; }
+        .tech-badge.js i { color: #f7df1e; text-shadow: 0 0 10px #f7df1e; }
+
+        /* Custom Modal Popup for Tech Badges */
+        .tech-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .tech-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .tech-modal-content {
+            background: var(--card-bg);
+            border: 2px solid var(--purple-primary);
+            padding: 35px;
+            border-radius: 20px;
+            max-width: 450px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 0 30px var(--purple-glow);
+            transform: scale(0.8);
+            transition: var(--transition);
+        }
+
+        .tech-modal.active .tech-modal-content {
+            transform: scale(1);
+        }
+
+        .tech-modal-content h3 {
+            color: var(--purple-primary);
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .tech-modal-content p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .tech-modal-close {
+            background: var(--purple-primary);
+            color: #fff;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 0 10px var(--purple-glow);
+            transition: var(--transition);
+        }
+
+        .tech-modal-close:hover {
+            box-shadow: 0 0 20px var(--purple-primary);
+            transform: translateY(-2px);
+        }
+
+        /* Scroll to Top Button */
+        .scroll-top-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 45px;
+            height: 45px;
+            background: var(--purple-primary);
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: 0 0 15px var(--purple-glow);
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 999;
+        }
+
+        .scroll-top-btn.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-top-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 25px var(--purple-primary);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: #070709;
+            color: var(--text-muted);
+            border-top: 1px solid rgba(138, 43, 226, 0.1);
+        }
+
+        footer span {
+            color: var(--purple-primary);
+            font-weight: 600;
+        }
+
+        /* Animations */
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 15px rgba(138, 43, 226, 0.3); }
+            100% { box-shadow: 0 0 30px rgba(138, 43, 226, 0.7); }
+        }
+
+        @keyframes fadeInOut {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">Motamayez <span>Store</span></div>
+        <div class="nav-right">
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="theme-toggle-btn" onclick="toggleTheme()"><i class="fas fa-moon" id="themeIcon"></i></button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero visible">
+        <div class="hero-bg-slider">
+            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80" alt="Code Background">
+        </div>
+        <div class="hero-content">
+            <div class="profile-img-container">
+                <img src="https://i.ibb.co/RkLqTSWf/867eab9c-7668-4ae8-8c54-d5172fc60b10.jpg" alt="Omar Osama">
+            </div>
+            <h1>Welcome to <span>Motamayez Store</span></h1>
+            <p>Created by <strong>Omar Osama</strong> - Professional Web Designer crafting high-performance, sleek, and modern web experiences.</p>
+            <a href="#portfolio" class="btn">Explore Our Work</a>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio">
+        <h2 class="section-title">Our <span>Portfolio</span></h2>
+        <div class="portfolio-grid">
+            
+            <!-- VIP 1: Film Show -->
+            <div class="card vip">
+                <span class="vip-badge">VIP Featured</span>
+                <div>
+                    <h3>Film Show Platform</h3>
+                    <p>موقع أفلام بسيرفرات عالمية وأحدث وأرقى الأفلام اللي هتشوفها عينك بجودة عالية وتصميم عصري.</p>
+                </div>
+                <a href="https://motamayez-store.github.io/filmshow/" target="_blank" class="card-link">Live Preview <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <!-- VIP 2: Motamayez Cars -->
+            <div class="card vip">
+                <span class="vip-badge">VIP Featured</span>
+                <div>
+                    <h3>Motamayez Cars</h3>
+                    <p>موقع شغل للسيارات كامل متكامل وفيه كل التفاصيل اللي هتساعد الواحد في معرفة كل ما يخص العمل.</p>
+                </div>
+                <a href="https://motamayez-store.github.io/motamayez/" target="_blank" class="card-link">Live Preview <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <!-- Regular 1: Tashtebat -->
+            <div class="card">
+                <div>
+                    <h3>Tashtebat & Real Estate</h3>
+                    <p>موقع تشطيبات بيوت وسكن وكل الخدمات الخاصة بالسمسرة وتنظيم العقارات.</p>
+                </div>
+                <a href="https://motamayez-store.github.io/Tashtebat/" target="_blank" class="card-link">Live Preview <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <!-- Regular 2: Work Website -->
+            <div class="card">
+                <div>
+                    <h3>Car Repair & Trading</h3>
+                    <p>موقع شغل تجارة وتصليح السيارات كعمل إضافي لخدمة الورش.</p>
+                </div>
+                <a href="https://motamayez-store.github.io/Work-website/" target="_blank" class="card-link">Live Preview <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <!-- Regular 3: Elmostafa Decor -->
+            <div class="card">
+                <div>
+                    <h3>Elmostafa Decor</h3>
+                    <p>موقع عامله للديكورات المنزلية ومجال التشطيبات والشغل الديكوري الراقي.</p>
+                </div>
+                <a href="https://motamayez-store.github.io/elmostafa-decor/" target="_blank" class="card-link">Live Preview <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2 class="section-title">About <span>Us</span></h2>
+        <div class="about-content">
+            <p>أنا <strong>عمر أسامة</strong>، مؤسس "المتميز ستور" (Motamayez Store) ومصمم مواقع احترافيه بأرخص الاسعار، متخصص في بناء وتطوير المواقع الإلكترونية من الصفر باستخدام أحدث التقنيات وأكواد HTML نظيفة وسريعة لتقديم أعمال فريدة وعصرية.</p>
+            <div class="contact-info-list">
+                <a href="tel:01281547194" class="contact-info-item">
+                    <i class="fas fa-phone"></i> 01281547194
+                </a>
+                <a href="mailto:amr955276@gmail.com" class="contact-info-item">
+                    <i class="fas fa-envelope"></i> amr955276@gmail.com
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials">
+        <h2 class="section-title">Client <span>Testimonials</span></h2>
+        <div class="testimonials-counter" id="testimonialsCounter">
+            ⭐ موثوق من قبل أكثر من 2,450 عميل راضٍ حول العالم
+        </div>
+        
+        <div class="testimonials-grid" id="testimonialsContainer">
+            <!-- Testimonials injected dynamically -->
+        </div>
+
+        <div class="add-testimonial-form">
+            <h3 style="text-align: center; color: var(--purple-primary);">أضف رأيك في الخدمة (ثقتك غايتنا)</h3>
+            <input type="text" id="clientName" placeholder="اسمك الكريم">
+            <textarea id="clientFeedback" rows="3" placeholder="رأيك في الشغل..."></textarea>
+            <button type="button" class="btn" onclick="addTestimonial()">إضافة الرأي</button>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2 class="section-title">Get in <span>Touch</span></h2>
+        <form class="contact-form" onsubmit="sendToWhatsApp(event)">
+            <div class="form-group">
+                <label>اسمك / اسم الشركة</label>
+                <input type="text" id="waName" required placeholder="أدخل اسمك هنا">
+            </div>
+            <div class="form-group">
+                <label>نوع الخدمة أو المشروع المطلوبة</label>
+                <select id="waService">
+                    <option value="تصميم موقع جديد">تصميم موقع جديد</option>
+                    <option value="تطوير موقع قائم">تطوير موقع قائم</option>
+                    <option value="استشارة برمجية">استشارة برمجية</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>تفاصيل الرسالة أو الطلب</label>
+                <textarea id="waMessage" rows="4" required placeholder="اكتب تفاصيل مشروعك..."></textarea>
+            </div>
+            <button type="submit" class="btn" style="width: 100%; text-align: center;">إرسال الطلب عبر الواتساب <i class="fab fa-whatsapp"></i></button>
+        </form>
+    </section>
+
+    <!-- Tech Stack Section (HTML, CSS, JS Glowing Badges) -->
+    <div class="tech-stack-section">
+        <div class="tech-stack-title">Built with Professional Technologies</div>
+        <div class="tech-badges-container">
+            <div class="tech-badge html" onclick="showTechInfo('html')"><i class="fab fa-html5"></i> HTML5</div>
+            <div class="tech-badge css" onclick="showTechInfo('css')"><i class="fab fa-css3-alt"></i> CSS3</div>
+            <div class="tech-badge js" onclick="showTechInfo('js')"><i class="fab fa-js"></i> JavaScript</div>
+        </div>
+    </div>
+
+    <!-- Modal Popup for Tech Stack -->
+    <div class="tech-modal" id="techModal" onclick="closeTechModal(event)">
+        <div class="tech-modal-content" id="modalContentBox">
+            <h3 id="modalTitle">عنوان التقنية</h3>
+            <p id="modalDesc">تفاصيل التقنية هنا...</p>
+            <button class="tech-modal-close" onclick="closeTechModalDirect()">حسناً، رائع!</button>
+        </div>
+    </div>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-top-btn" id="scrollTopBtn" onclick="scrollToTop()"><i class="fas fa-arrow-up"></i></button>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Motamayez Store | Designed by <span>Omar Osama</span>. All Rights Reserved.</p>
+    </footer>
+
+    <!-- JavaScript Interactions -->
+    <script>
+        // Testimonials Mega Pool
+        const megaTestimonialsPool = [
+            { name: "محمد أحمد", text: "شغل احترافي جداً ومقاسات سريعة وخفيفة من المتميز ستور، أنصح بالتعامل معه بقوة!" },
+            { name: "أحمد خالد", text: "تصميمات فخمة ومرتبة وتفاصيل دقيقة في كل موقع، تسلم إيدك يا عمر." },
+            { name: "محمود إبراهيم", text: "أفضل مصمم ويب تعاملت معاه، دقة في المواعيد وسرعة غير معقولة." },
+            { name: "سارة عبد الله", text: "الموقع طلع تحفة فنية، والأكواد نظيفة جداً وخفيفة في التصفح." },
+            { name: "كريم محمود", text: "خدمة عملاء ممتازة وتنفيذ دقيق لكل التفاصيل اللي طلبتها بالحرف." },
+            { name: "يوسف حسن", text: "شغل عالمي يا كرانشي، بالتوفيق دايماً وإلى الأمام!" },
+            { name: "مصطفى علي", text: "المواقع بتفتح في ثواني معدودة وتصميم الـ Dark Mode فخم جداً." },
+            { name: "إسلام رجب", text: "أفضل استثمار عملته لمشروعي كان مع المتميز ستور." },
+            { name: "حسام الدين", text: "التصميمات متجاوبة وشكلها مبهر على الموبايل والكمبيوتر." },
+            { name: "محمود الشناوي", text: "شغل عالي جداً وأسلوب محترف في تسليم المشاريع." }
+        ];
+
+        function renderTestimonials() {
+            const container = document.getElementById('testimonialsContainer');
+            container.innerHTML = "";
+            let savedUserReviews = JSON.parse(localStorage.getItem('user_custom_reviews')) || [];
+            let combinedPool = [...savedUserReviews, ...megaTestimonialsPool];
+            let shuffled = combinedPool.sort(() => 0.5 - Math.random());
+            let selected = shuffled.slice(0, 3);
+
+            selected.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'testimonial-card';
+                card.innerHTML = `<p>"${item.text}"</p><h4>${item.name}</h4>`;
+                container.appendChild(card);
+            });
+        }
+
+        function addTestimonial() {
+            const name = document.getElementById('clientName').value.trim();
+            const feedback = document.getElementById('clientFeedback').value.trim();
+
+            if(name === "" || feedback === "") {
+                alert("من فضلك أدخل الاسم ورأيك أولاً!");
+                return;
+            }
+
+            let savedUserReviews = JSON.parse(localStorage.getItem('user_custom_reviews')) || [];
+            savedUserReviews.unshift({ name: name, text: feedback });
+            localStorage.setItem('user_custom_reviews', JSON.stringify(savedUserReviews));
+
+            renderTestimonials();
+            document.getElementById('clientName').value = "";
+            document.getElementById('clientFeedback').value = "";
+            alert("شكراً لك! تم حفظ رأيك بنجاح وسيبقى ظاهراً لك مدى الحياة.");
+        }
+
+        // Tech Stack Modal Information System
+        function showTechInfo(tech) {
+            const modal = document.getElementById('techModal');
+            const title = document.getElementById('modalTitle');
+            const desc = document.getElementById('modalDesc');
+
+            if(tech === 'html') {
+                title.innerText = "HTML5 - الهيكل الفولاذي";
+                desc.innerText = "بكل فخر، بناء هيكلي صلب وخالي من الأخطاء لضمان سرعة تحميل تخترق الصاعقة وتتوافق مع جميع الأجهزة والمنصات بامتياز!";
+            } else if(tech === 'css') {
+                title.innerText = "CSS3 - سحر التجميل والفخامة";
+                desc.innerText = "لمسات فنية وتصاميم عصرية ساحرة تسر الناظرين، مع نظام Dark / Light Mode متطور وتأثيرات بصرية راقية تريح العين.";
+            } else if(tech === 'js') {
+                title.innerText = "JavaScript - نبض التفاعل الذكي";
+                desc.innerText = "تفاعل ذكي وسرعة استجابة خارقة، أنظمة تخزين محلية وقواعد بيانات وهمية بملايين الآراء لخدمة العملاء بأعلى احترافية.";
+            }
+
+            modal.classList.add('active');
+        }
+
+        function closeTechModal(e) {
+            if(e.target.id === 'techModal') {
+                document.getElementById('techModal').classList.remove('active');
+            }
+        }
+
+        function closeTechModalDirect() {
+            document.getElementById('techModal').classList.remove('active');
+        }
+
+        // Dark / Light Mode Toggle
+        function toggleTheme() {
+            document.body.classList.toggle('light-mode');
+            const icon = document.getElementById('themeIcon');
+            if(document.body.classList.contains('light-mode')) {
+                icon.className = "fas fa-sun";
+            } else {
+                icon.className = "fas fa-moon";
+            }
+        }
+
+        // Scroll to Top functionality
+        window.onscroll = function() {
+            const btn = document.getElementById('scrollTopBtn');
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                btn.classList.add('show');
+            } else {
+                btn.classList.remove('show');
+            }
+
+            // Scroll Animation Observer trigger
+            revealSections();
+        };
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Scroll Animation Observer
+        function revealSections() {
+            const sections = document.querySelectorAll('section');
+            sections.forEach(sec => {
+                const secTop = sec.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight * 0.85;
+                if(secTop < windowHeight) {
+                    sec.classList.add('visible');
+                }
+            });
+        }
+
+        window.onload = function() {
+            renderTestimonials();
+            revealSections();
+        };
+
+        function sendToWhatsApp(e) {
+            e.preventDefault();
+            const name = document.getElementById('waName').value;
+            const service = document.getElementById('waService').value;
+            const message = document.getElementById('waMessage').value;
+
+            const phone = "201281547194";
+            const text = `مرحباً بك يا عمر (المتميز ستور)، لدي طلب جديد:%0A- الاسم: ${name}%0A- الخدمة: ${service}%0A- التفاصيل: ${message}`;
+            
+            const whatsappUrl = `https://wa.me/${phone}?text=${text}`;
+            window.open(whatsappUrl, '_blank');
+        }
+    </script>
+</body>
+</html>
