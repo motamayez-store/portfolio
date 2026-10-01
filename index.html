@@ -279,6 +279,28 @@
             border-radius: 20px;
             font-weight: 600;
             box-shadow: 0 0 10px var(--purple-glow);
+            z-index: 2;
+        }
+
+        .card-img-container {
+            width: 100%;
+            height: 165px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 15px;
+            border: 1px solid rgba(138, 43, 226, 0.3);
+            background: #000;
+        }
+
+        .card-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .card:hover .card-img-container img {
+            transform: scale(1.08);
         }
 
         .card h3 {
@@ -306,6 +328,66 @@
 
         .card-link:hover {
             color: var(--text-color);
+        }
+
+        /* Why Choose Our Style & VIP Services Section */
+        .why-us-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .why-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(138, 43, 226, 0.2);
+            border-radius: 15px;
+            padding: 30px 20px;
+            text-align: center;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .why-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--purple-primary);
+            box-shadow: 0 10px 30px rgba(138, 43, 226, 0.2);
+        }
+
+        .why-icon {
+            width: 65px;
+            height: 65px;
+            background: rgba(138, 43, 226, 0.1);
+            border: 2px solid var(--purple-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px auto;
+            color: var(--purple-primary);
+            font-size: 1.5rem;
+            box-shadow: 0 0 15px var(--purple-glow);
+            transition: var(--transition);
+        }
+
+        .why-card:hover .why-icon {
+            background: var(--purple-primary);
+            color: #fff;
+            transform: scale(1.1);
+        }
+
+        .why-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+            color: var(--text-color);
+        }
+
+        .why-card p {
+            color: var(--text-muted);
+            font-size: 0.92rem;
+            line-height: 1.6;
         }
 
         /* About Section */
@@ -654,10 +736,59 @@
             0%, 100% { opacity: 0; }
             50% { opacity: 1; }
         }
+   
+    /* تصميم عارض الصور الممتلئ للشاشة (Lightbox Modal) */
+.image-lightbox-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    cursor: zoom-out;
+}
+
+.image-lightbox-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.image-lightbox-modal img {
+    max-width: 90%;
+    max-height: 90vh;
+    border-radius: 12px;
+    border: 2px solid var(--purple-primary);
+    box-shadow: 0 0 40px var(--purple-glow);
+    transform: scale(0.7);
+    transition: transform 0.3s ease;
+}
+
+.image-lightbox-modal.active img {
+    transform: scale(1);
+}
+    .scroll-progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 4px;
+    background: var(--purple-primary);
+    width: 0%;
+    z-index: 9999;
+    box-shadow: 0 0 10px var(--purple-glow);
+    transition: width 0.1s ease;
+    }
     </style>
 </head>
 <body>
-
+<div class="scroll-progress-bar" id="scrollProgressBar"></div>
     <!-- Header -->
     <header>
         <div class="logo">Motamayez <span>Store</span></div>
@@ -666,6 +797,7 @@
                 <ul>
                     <li><a href="#home">Home</a></li>
                     <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#why-us">Why Choose Us؟</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#testimonials">Testimonials</a></li>
                     <li><a href="#contact">Contact</a></li>
@@ -698,6 +830,9 @@
             <!-- VIP 1: Film Show -->
             <div class="card vip">
                 <span class="vip-badge">VIP Featured</span>
+                <div class="card-img-container">
+                    <img src="https://i.ibb.co/4w14TtT3/c5760394-0dac-4f57-be83-895235949504.jpg" alt="Film Show Preview">
+                </div>
                 <div>
                     <h3>Film Show Platform</h3>
                     <p>موقع أفلام بسيرفرات عالمية وأحدث وأرقى الأفلام اللي هتشوفها عينك بجودة عالية وتصميم عصري.</p>
@@ -708,6 +843,9 @@
             <!-- VIP 2: Motamayez Cars -->
             <div class="card vip">
                 <span class="vip-badge">VIP Featured</span>
+                <div class="card-img-container">
+                    <img src="https://i.ibb.co/pvRpvdyX/42406770-b659-4803-a015-e67d5d4dfe69.jpg" alt="Motamayez Cars Preview">
+                </div>
                 <div>
                     <h3>Motamayez Cars</h3>
                     <p>موقع شغل للسيارات كامل متكامل وفيه كل التفاصيل اللي هتساعد الواحد في معرفة كل ما يخص العمل.</p>
@@ -717,6 +855,9 @@
 
             <!-- Regular 1: Tashtebat -->
             <div class="card">
+                <div class="card-img-container">
+                    <img src="https://i.ibb.co/yBBtt4pP/b153c4de-feaf-4ff2-b599-28ec7f37d0b5.jpg" alt="Tashtebat Preview">
+                </div>
                 <div>
                     <h3>Tashtebat & Real Estate</h3>
                     <p>موقع تشطيبات بيوت وسكن وكل الخدمات الخاصة بالسمسرة وتنظيم العقارات.</p>
@@ -726,6 +867,9 @@
 
             <!-- Regular 2: Work Website -->
             <div class="card">
+                <div class="card-img-container">
+                    <img src="https://i.ibb.co/XZb7h14B/27634504-e34a-41d8-8a54-08a1ddda83a6.jpg" alt="Car Repair Preview">
+                </div>
                 <div>
                     <h3>Car Repair & Trading</h3>
                     <p>موقع شغل تجارة وتصليح السيارات كعمل إضافي لخدمة الورش.</p>
@@ -735,6 +879,9 @@
 
             <!-- Regular 3: Elmostafa Decor -->
             <div class="card">
+                <div class="card-img-container">
+                    <img src="https://i.ibb.co/ycDSYVSk/1d0f63c5-2332-4ae1-bfba-9437b2473879.jpg" alt="Elmostafa Decor Preview">
+                </div>
                 <div>
                     <h3>Elmostafa Decor</h3>
                     <p>موقع عامله للديكورات المنزلية ومجال التشطيبات والشغل الديكوري الراقي.</p>
@@ -744,11 +891,39 @@
 
             <!-- Regular 4: Docor Rabbits -->
             <div class="card">
-                <div>
-                    <h3>Docor Rabbits</h3>
-                    <p>موقع لتجارة الأرانب بكل تفاصيلها وخدماتها وطرق التربية والتجارة الخاصة بها.</p>
-                </div>
-                <a href="https://motamayez-store.github.io/rabbits/" target="_blank" class="card-link">Live Preview <i class="fas fa-arrow-right"></i></a>
+    <div class="card-img-container">
+        <img src="https://i.ibb.co/wZnzdTHS/9613a868-eaeb-4971-bd88-69ab7219251e.jpg" alt="Doctor Rabbits Preview">
+    </div>
+    <div>
+        <h3>Doctor Rabbits</h3
+        <p>موقع لتجارة الأرانب بكل تفاصيلها وخدماتها وطرق التربية والتجارة الخاصة بها.</p>
+    </div>
+    <a href="https://motamayez-store.github.io/rabbits/" target="_blank" class="card-link">Live Preview <i class="fas fa-arrow-right"></i></a>
+            </div>
+            
+    </section>
+
+    <!-- Why Choose Our Style & VIP Services Section -->
+    <section id="why-us">
+        <h2 class="section-title">لماذا تختار <span>المتميز ستور؟</span></h2>
+        <div class="why-us-container">
+            
+            <div class="why-card">
+                <div class="why-icon"><i class="fas fa-headset"></i></div>
+                <h3>دعم وموظف 24/7</h3>
+                <p>خدمة عملاء ومتابعة مستمرة على مدار الساعة طوال أيام الأسبوع لضمان عمل موقعك بكفاءة تامة بدون أي توقف.</p>
+            </div>
+
+            <div class="why-card">
+                <div class="why-icon"><i class="fas fa-user-shield"></i></div>
+                <h3>متابعة شاملة من المهندس</h3>
+                <p>إشراف ومتابعة هندسية مباشرة ومخصصة لك مني أنا شخصياً: <strong>المهندس عمر أسامة</strong> لضمان أعلى جودة تنفيذ.</p>
+            </div>
+
+            <div class="why-card">
+                <div class="why-icon"><i class="fas fa-server"></i></div>
+                <h3>سيرفر كامل ورسومات تقنية</h3>
+                <p>بنية تحتية قوية وسيرفرات فائقة السرعة مع رسومات وتصاميم برمجية متطورة لتأمين واستقرار بيانات مشروعك.</p>
             </div>
 
         </div>
@@ -978,6 +1153,38 @@
             const whatsappUrl = `https://wa.me/${phone}?text=${text}`;
             window.open(whatsappUrl, '_blank');
         }
+   
+    // إنشاء وفتح الـ Lightbox عند الضغط على أي صورة في الكاردات
+document.querySelectorAll('.card-img-container img').forEach(img => {
+    img.style.cursor = 'zoom-in';
+    img.addEventListener('click', function(e) {
+        e.stopPropagation(); // منع انتقال الحدث للكارد نفسه
+        
+        // إنشاء عنصر الـ Modal لو مش موجود
+        let modal = document.getElementById('imgLightboxModal');
+        if (!modal) {
+            modal = document.createElement('div');
+            modal.id = 'imgLightboxModal';
+            modal.className = 'image-lightbox-modal';
+            modal.innerHTML = '<img id="lightboxImg" src="" alt="Zoomed Image">';
+            document.body.appendChild(modal);
+            
+            // قفل الـ Modal عند الضغط عليه في أي مكان
+            modal.addEventListener('click', function() {
+                modal.classList.remove('active');
+            });
+        }
+        
+        // وضع رابط الصورة المكبرة وإظهار المودال
+        document.getElementById('lightboxImg').src = this.src;
+        modal.classList.add('active');
+    });
+});
+   // أضف السطر ده جوه دالة الـ onscroll
+let winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+let scrolled = (winScroll / height) * 100;
+document.getElementById('scrollProgressBar').style.width = scrolled + "%"; 
     </script>
 </body>
-    </html>
+</html>
