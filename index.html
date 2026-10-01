@@ -786,6 +786,22 @@
     transition: width 0.1s ease;
     }
     </style>
+<script>
+    // منع زر الفأرة الأيمن (كليك يمين)
+    document.addEventListener('contextmenu', e => e.preventDefault());
+
+    // منع اختصارات فتح لوحة فحص العناصر وعرض المصدر
+    document.addEventListener('keydown', e => {
+        if (
+            e.key === 'F12' || 
+            (e.ctrlKey && e.shiftKey && ['I', 'J', 'C'].includes(e.key.toUpperCase())) || 
+            (e.ctrlKey && e.key.toUpperCase() === 'U')
+        ) {
+            e.preventDefault();
+        }
+    });
+</script>
+
 </head>
 <body>
 <div class="scroll-progress-bar" id="scrollProgressBar"></div>
