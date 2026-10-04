@@ -737,71 +737,71 @@
             50% { opacity: 1; }
         }
    
-    /* تصميم عارض الصور الممتلئ للشاشة (Lightbox Modal) */
-.image-lightbox-modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.85);
-    backdrop-filter: blur(8px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 9999;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-    cursor: zoom-out;
-}
-
-.image-lightbox-modal.active {
-    opacity: 1;
-    visibility: visible;
-}
-
-.image-lightbox-modal img {
-    max-width: 90%;
-    max-height: 90vh;
-    border-radius: 12px;
-    border: 2px solid var(--purple-primary);
-    box-shadow: 0 0 40px var(--purple-glow);
-    transform: scale(0.7);
-    transition: transform 0.3s ease;
-}
-
-.image-lightbox-modal.active img {
-    transform: scale(1);
-}
-    .scroll-progress-bar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 4px;
-    background: var(--purple-primary);
-    width: 0%;
-    z-index: 9999;
-    box-shadow: 0 0 10px var(--purple-glow);
-    transition: width 0.1s ease;
-    }
-    </style>
-<script>
-    // منع زر الفأرة الأيمن (كليك يمين)
-    document.addEventListener('contextmenu', e => e.preventDefault());
-
-    // منع اختصارات فتح لوحة فحص العناصر وعرض المصدر
-    document.addEventListener('keydown', e => {
-        if (
-            e.key === 'F12' || 
-            (e.ctrlKey && e.shiftKey && ['I', 'J', 'C'].includes(e.key.toUpperCase())) || 
-            (e.ctrlKey && e.key.toUpperCase() === 'U')
-        ) {
-            e.preventDefault();
+        /* تصميم عارض الصور الممتلئ للشاشة (Lightbox Modal) */
+        .image-lightbox-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            cursor: zoom-out;
         }
-    });
-</script>
 
+        .image-lightbox-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .image-lightbox-modal img {
+            max-width: 90%;
+            max-height: 90vh;
+            border-radius: 12px;
+            border: 2px solid var(--purple-primary);
+            box-shadow: 0 0 40px var(--purple-glow);
+            transform: scale(0.7);
+            transition: transform 0.3s ease;
+        }
+
+        .image-lightbox-modal.active img {
+            transform: scale(1);
+        }
+
+        .scroll-progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: var(--purple-primary);
+            width: 0%;
+            z-index: 9999;
+            box-shadow: 0 0 10px var(--purple-glow);
+            transition: width 0.1s ease;
+        }
+    </style>
+    <script>
+        // منع زر الفأرة الأيمن (كليك يمين)
+        document.addEventListener('contextmenu', e => e.preventDefault());
+
+        // منع اختصارات فتح لوحة فحص العناصر وعرض المصدر
+        document.addEventListener('keydown', e => {
+            if (
+                e.key === 'F12' || 
+                (e.ctrlKey && e.shiftKey && ['I', 'J', 'C'].includes(e.key.toUpperCase())) || 
+                (e.ctrlKey && e.key.toUpperCase() === 'U')
+            ) {
+                e.preventDefault();
+            }
+        });
+    </script>
 </head>
 <body>
 <div class="scroll-progress-bar" id="scrollProgressBar"></div>
@@ -813,7 +813,7 @@
                 <ul>
                     <li><a href="#home">Home</a></li>
                     <li><a href="#portfolio">Portfolio</a></li>
-                    <li><a href="#why-us">Why Choose Us؟</a></li>
+                    <li><a href="#why-us">Why Choose Us?</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#testimonials">Testimonials</a></li>
                     <li><a href="#contact">Contact</a></li>
@@ -869,6 +869,32 @@
                 <a href="https://motamayez-store.github.io/motamayez/" target="_blank" class="card-link">Live Preview <i class="fas fa-arrow-right"></i></a>
             </div>
 
+            <!-- VIP 3: Cartoon Kids World -->
+            <div class="card vip">
+                <span class="vip-badge">VIP Featured</span>
+                <div class="card-img-container">
+                    <img src="https://i.ibb.co/DPytMv3d/14aad16d-a634-42ab-b5d4-e1a06b8baf3f.jpg" alt="Cartoon Kids World Preview">
+                </div>
+                <div>
+                    <h3>Cartoon Kids World</h3>
+                    <p>موقع كارتون بناتي بسيرفرات عالمية وأجمل العروض والرسوم المتحركة الممتعة.</p>
+                </div>
+                <a href="https://motamayez-store.github.io/Cartoon-World/" target="_blank" class="card-link">Live Preview <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <!-- VIP 4: Edraak AI Study Assistant -->
+            <div class="card vip">
+                <span class="vip-badge">VIP Featured</span>
+                <div class="card-img-container">
+                    <img src="https://i.ibb.co/ycLnR05M/4756ed21-849f-4adb-b7cb-13d6960a1972.jpg" alt="Edraak AI Preview">
+                </div>
+                <div>
+                    <h3>Edraak AI Study</h3>
+                    <p>موقع ذكاء اصطناعي متطور للمذاكرة يتفوق بذكائه وخصائصه لخدمة الطلاب والبحث.</p>
+                </div>
+                <a href="https://ai--edraakai.replit.app" target="_blank" class="card-link">Live Preview <i class="fas fa-arrow-right"></i></a>
+            </div>
+
             <!-- Regular 1: Tashtebat -->
             <div class="card">
                 <div class="card-img-container">
@@ -905,18 +931,31 @@
                 <a href="https://motamayez-store.github.io/elmostafa-decor/" target="_blank" class="card-link">Live Preview <i class="fas fa-arrow-right"></i></a>
             </div>
 
-            <!-- Regular 4: Docor Rabbits -->
+            <!-- Regular 4: Doctor Rabbits -->
             <div class="card">
-    <div class="card-img-container">
-        <img src="https://i.ibb.co/wZnzdTHS/9613a868-eaeb-4971-bd88-69ab7219251e.jpg" alt="Doctor Rabbits Preview">
-    </div>
-    <div>
-        <h3>Doctor Rabbits</h3
-        <p>موقع لتجارة الأرانب بكل تفاصيلها وخدماتها وطرق التربية والتجارة الخاصة بها.</p>
-    </div>
-    <a href="https://motamayez-store.github.io/rabbits/" target="_blank" class="card-link">Live Preview <i class="fas fa-arrow-right"></i></a>
+                <div class="card-img-container">
+                    <img src="https://i.ibb.co/wZnzdTHS/9613a868-eaeb-4971-bd88-69ab7219251e.jpg" alt="Doctor Rabbits Preview">
+                </div>
+                <div>
+                    <h3>Doctor Rabbits</h3>
+                    <p>موقع لتجارة الأرانب بكل تفاصيلها وخدماتها وطرق التربية والتجارة الخاصة بها.</p>
+                </div>
+                <a href="https://motamayez-store.github.io/rabbits/" target="_blank" class="card-link">Live Preview <i class="fas fa-arrow-right"></i></a>
             </div>
-            
+
+            <!-- Regular 5: Elden (Religious Platform) -->
+            <div class="card">
+                <div class="card-img-container">
+                    <img src="https://i.ibb.co/60B8H9dJ/46317.jpg" alt="Elden Preview">
+                </div>
+                <div>
+                    <h3>Elden Religious Platform</h3>
+                    <p>موقع ديني شامل يضم كل ما يخص الدين والعلوم الإسلامية بطريقة مبسطة وراقية.</p>
+                </div>
+                <a href="https://motamayez-store.github.io/-Elden/" target="_blank" class="card-link">Live Preview <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+        </div>
     </section>
 
     <!-- Why Choose Our Style & VIP Services Section -->
@@ -965,7 +1004,7 @@
     <section id="testimonials">
         <h2 class="section-title">Client <span>Testimonials</span></h2>
         <div class="testimonials-counter" id="testimonialsCounter">
-            ⭐ موثوق من قبل أكثر من86 عميل راضٍ حول العالم
+            ⭐ موثوق من قبل أكثر من 86 عميل راضٍ حول العالم
         </div>
         
         <div class="testimonials-grid" id="testimonialsContainer">
@@ -1004,7 +1043,7 @@
         </form>
     </section>
 
-    <!-- Tech Stack Section (HTML, CSS, JS Glowing Badges) -->
+    <!-- Tech Stack Section (Bottom Glowing HTML, CSS, JS) -->
     <div class="tech-stack-section">
         <div class="tech-stack-title">Built with Professional Technologies</div>
         <div class="tech-badges-container">
@@ -1123,7 +1162,7 @@
             }
         }
 
-        // Scroll to Top functionality
+        // Scroll to Top functionality & Progress Bar
         window.onscroll = function() {
             const btn = document.getElementById('scrollTopBtn');
             if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
@@ -1131,6 +1170,12 @@
             } else {
                 btn.classList.remove('show');
             }
+
+            // Scroll Progress Bar Update
+            let winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+            let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            let scrolled = (winScroll / height) * 100;
+            document.getElementById('scrollProgressBar').style.width = scrolled + "%";
 
             // Scroll Animation Observer trigger
             revealSections();
@@ -1169,38 +1214,27 @@
             const whatsappUrl = `https://wa.me/${phone}?text=${text}`;
             window.open(whatsappUrl, '_blank');
         }
-   
-    // إنشاء وفتح الـ Lightbox عند الضغط على أي صورة في الكاردات
-document.querySelectorAll('.card-img-container img').forEach(img => {
-    img.style.cursor = 'zoom-in';
-    img.addEventListener('click', function(e) {
-        e.stopPropagation(); // منع انتقال الحدث للكارد نفسه
-        
-        // إنشاء عنصر الـ Modal لو مش موجود
-        let modal = document.getElementById('imgLightboxModal');
-        if (!modal) {
-            modal = document.createElement('div');
-            modal.id = 'imgLightboxModal';
-            modal.className = 'image-lightbox-modal';
-            modal.innerHTML = '<img id="lightboxImg" src="" alt="Zoomed Image">';
-            document.body.appendChild(modal);
-            
-            // قفل الـ Modal عند الضغط عليه في أي مكان
-            modal.addEventListener('click', function() {
-                modal.classList.remove('active');
+
+        // Image Lightbox Modal Integration
+        document.querySelectorAll('.card-img-container img').forEach(img => {
+            img.style.cursor = 'zoom-in';
+            img.addEventListener('click', function(e) {
+                e.stopPropagation();
+                let modal = document.getElementById('imgLightboxModal');
+                if (!modal) {
+                    modal = document.createElement('div');
+                    modal.id = 'imgLightboxModal';
+                    modal.className = 'image-lightbox-modal';
+                    modal.innerHTML = '<img id="lightboxImg" src="" alt="Zoomed Image">';
+                    document.body.appendChild(modal);
+                    modal.addEventListener('click', function() {
+                        modal.classList.remove('active');
+                    });
+                }
+                document.getElementById('lightboxImg').src = this.src;
+                modal.classList.add('active');
             });
-        }
-        
-        // وضع رابط الصورة المكبرة وإظهار المودال
-        document.getElementById('lightboxImg').src = this.src;
-        modal.classList.add('active');
-    });
-});
-   // أضف السطر ده جوه دالة الـ onscroll
-let winScroll = document.documentElement.scrollTop || document.body.scrollTop;
-let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-let scrolled = (winScroll / height) * 100;
-document.getElementById('scrollProgressBar').style.width = scrolled + "%"; 
+        });
     </script>
 </body>
-</html>
+    </html>
