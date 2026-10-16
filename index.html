@@ -229,7 +229,7 @@
         .section-title {
             text-align: center;
             font-size: 2.5rem;
-            margin-bottom: 50px;
+            margin-bottom: 30px;
             font-weight: 700;
         }
 
@@ -237,17 +237,36 @@
             color: var(--purple-primary);
         }
 
-        /* Portfolio Section */
-        .portfolio-grid {
+        .sub-section-title {
+            text-align: center;
+            font-size: 1.8rem;
+            margin: 40px 0 25px 0;
+            color: var(--purple-primary);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        /* Portfolio Grids */
+        .portfolio-grid-vip {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .portfolio-grid-regular {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
         }
 
         .card {
             background: var(--card-bg);
             border-radius: 15px;
-            padding: 30px;
+            padding: 25px;
             border: 1px solid rgba(138, 43, 226, 0.1);
             transition: var(--transition);
             display: flex;
@@ -266,6 +285,12 @@
         .card.vip {
             border: 2px solid var(--purple-primary);
             background: linear-gradient(145deg, var(--card-bg), #1a1025);
+            box-shadow: 0 0 20px rgba(138, 43, 226, 0.2);
+        }
+
+        .card.vip:hover {
+            box-shadow: 0 0 35px var(--purple-primary);
+            transform: translateY(-8px);
         }
 
         .vip-badge {
@@ -284,7 +309,7 @@
 
         .card-img-container {
             width: 100%;
-            height: 165px;
+            height: 175px;
             border-radius: 10px;
             overflow: hidden;
             margin-bottom: 15px;
@@ -813,7 +838,7 @@
                 <ul>
                     <li><a href="#home">Home</a></li>
                     <li><a href="#portfolio">Portfolio</a></li>
-                    <li><a href="#why-us">Why Choose Us?</a></li>
+                    <li><a href="#why-us">Why Choose Us؟</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#testimonials">Testimonials</a></li>
                     <li><a href="#contact">Contact</a></li>
@@ -841,13 +866,16 @@
     <!-- Portfolio Section -->
     <section id="portfolio">
         <h2 class="section-title">Our <span>Portfolio</span></h2>
-        <div class="portfolio-grid">
+
+        <!-- VIP Featured Projects Section -->
+        <div class="sub-section-title"><i class="fas fa-crown"></i> VIP Featured Projects</div>
+        <div class="portfolio-grid-vip">
             
             <!-- VIP 1: Film Show -->
             <div class="card vip">
                 <span class="vip-badge">VIP Featured</span>
                 <div class="card-img-container">
-                    <img src="https://i.ibb.co/4w14TtT3/c5760394-0dac-4f57-be83-895235949504.jpg" alt="Film Show Preview">
+                    <img src="https://i.ibb.co/svC3HQz5/Gemini-Generated-Image-kzjnekzjnekzjnek.jpg" alt="Gemini-Generated-Image-kzjnekzjnekzjnek" border="0"></a>">
                 </div>
                 <div>
                     <h3>Film Show Platform</h3>
@@ -869,11 +897,29 @@
                 <a href="https://motamayez-store.github.io/motamayez/" target="_blank" class="card-link">Live Preview <i class="fas fa-arrow-right"></i></a>
             </div>
 
+<!-- VIP 2: Build Supply -->
+            <div class="card vip">
+                <span class="vip-badge">VIP Featured</span>
+                <div class="card-img-container">
+                    <img src="https://i.ibb.co/HD35Gh2T/Gemini-Generated-Image-fkds7vfkds7vfkds.jpg" alt="Gemini-Generated-Image-fkds7vfkds7vfkds" border="0"></a>". alt="Motamayez Cars Preview">
+                </div>
+                <div>
+                    <h3>Build Supply</h3>
+                    <p>.منصه عالميه للتجاره في الخرسانه ومواد البناء بأحدث السيرفرات العالميه</p>
+                </div>
+                <a href="https://motamayez-store.github.io/omnia-buildsupply/" target="_blank" class="card-link">Live Preview <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+
+
+
+
+          
             <!-- VIP 3: Cartoon Kids World -->
             <div class="card vip">
                 <span class="vip-badge">VIP Featured</span>
                 <div class="card-img-container">
-                    <img src="https://i.ibb.co/DPytMv3d/14aad16d-a634-42ab-b5d4-e1a06b8baf3f.jpg" alt="Cartoon Kids World Preview">
+                    <img src="https://i.ibb.co/FqJjJHrN/Gemini-Generated-Image-wmkmrswmkmrswmkm.jpg" alt="Gemini-Generated-Image-wmkmrswmkmrswmkm" border="0"></a>"="0"></a>" alt="Cartoon Kids World Preview">
                 </div>
                 <div>
                     <h3>Cartoon Kids World</h3>
@@ -886,7 +932,7 @@
             <div class="card vip">
                 <span class="vip-badge">VIP Featured</span>
                 <div class="card-img-container">
-                    <img src="https://i.ibb.co/ycLnR05M/4756ed21-849f-4adb-b7cb-13d6960a1972.jpg" alt="Edraak AI Preview">
+                    <img src="https://i.ibb.co/N6wMMky7/Gemini-Generated-Image-6s92xn6s92xn6s92.jpg" alt="Gemini-Generated-Image-6s92xn6s92xn6s92" border="0"></a>" alt="Edraak AI Preview">
                 </div>
                 <div>
                     <h3>Edraak AI Study</h3>
@@ -894,6 +940,14 @@
                 </div>
                 <a href="https://ai--edraakai.replit.app" target="_blank" class="card-link">Live Preview <i class="fas fa-arrow-right"></i></a>
             </div>
+
+        </div>
+
+        <hr style="border: 0; height: 1px; background: rgba(138, 43, 226, 0.2); margin: 40px 0;">
+
+        <!-- Regular Projects Section -->
+        <div class="sub-section-title" style="color: var(--text-color);"><i class="fas fa-th-large"></i> Other Exceptional Works</div>
+        <div class="portfolio-grid-regular">
 
             <!-- Regular 1: Tashtebat -->
             <div class="card">
@@ -1053,7 +1107,7 @@
         </div>
     </div>
 
-    <!-- Modal Popup for Tech Stack -->
+    <!-- Modal Popup for Tech Badges -->
     <div class="tech-modal" id="techModal" onclick="closeTechModal(event)">
         <div class="tech-modal-content" id="modalContentBox">
             <h3 id="modalTitle">عنوان التقنية</h3>
@@ -1080,7 +1134,7 @@
             { name: "سارة عبد الله", text: "الموقع طلع تحفة فنية، والأكواد نظيفة جداً وخفيفة في التصفح." },
             { name: "كريم محمود", text: "خدمة عملاء ممتازة وتنفيذ دقيق لكل التفاصيل اللي طلبتها بالحرف." },
             { name: "يوسف حسن", text: "شغل عالمي يا كرانشي، بالتوفيق دايماً وإلى الأمام!" },
-            { name: "مصطفى علي", text: "المواقع بتفتح في ثواني معدودة وتصميم الـ Dark Mode فخم جداً." },
+            { name: "مصطفى علي", text: "الموقع بيفتح في ثواني معدودة وتصميم الـ Dark Mode فخم جداً." },
             { name: "إسلام رجب", text: "أفضل استثمار عملته لمشروعي كان مع المتميز ستور." },
             { name: "حسام الدين", text: "التصميمات متجاوبة وشكلها مبهر على الموبايل والكمبيوتر." },
             { name: "محمود الشناوي", text: "شغل عالي جداً وأسلوب محترف في تسليم المشاريع." }
@@ -1237,4 +1291,4 @@
         });
     </script>
 </body>
-    </html>
+</html>
